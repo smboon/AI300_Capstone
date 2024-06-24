@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Predict Customer Churn</title>
+    <style>
+      body {
+        background-color: #f0f0f0; /* Set background color of the body */
+        font-family: Arial, sans-serif; /* Choose a suitable font */
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto; /* Center the form horizontally */
+        background-color: #ffffff; /* Set background color of the form */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        text-align: center; /* Align text within the container to center */
+      }
+      h1 {
+        text-align: center; /* Align h1 header to center */
+      }
+      table {
+        width: 100%; /* Ensure the table spans the container width */
+      }
+      table td {
+        padding: 10px;
+        vertical-align: top;
+      }
+      input[type="text"],
+      select {
+        width: calc(100% - 10px); /* Adjust input width to fit table cell */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      input[type="submit"] {
+        display: block;
+        width: 100%;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #4caf50; /* Green background */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Predict Customer Churn</h1>
+      <form method="POST">
+        <table>
+          <tr>
+            <td>
+              <label for="tenure_months">Tenure Months:</label><br />
+              <input
+                type="text"
+                id="tenure_months"
+                name="tenure_months"
+                value="5"
+              />
+            </td>
+            <td>
+              <label for="has_phone_service">Has Phone Service:</label><br />
+              <select name="has_phone_service" id="has_phone_service" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="total_monthly_fee">Total Monthly Fee:</label><br />
+              <input
+                type="text"
+                id="total_monthly_fee"
+                name="total_monthly_fee"
+                value="28.45"
+              />
+            </td>
+            <td>
+              <label for="has_internet_service">Has Internet Service:</label
+              ><br />
+              <select
+                name="has_internet_service"
+                id="has_internet_service"
+                required
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="age">Age:</label><br />
+              <input type="text" id="age" name="age" value="75" />
+            </td>
+            <td>
+              <label for="has_premium_tech_support"
+                >Has Premium Tech Support:</label
+              ><br />
+              <select
+                name="has_premium_tech_support"
+                id="has_premium_tech_support"
+                required
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="contract_type">Contract Type:</label><br />
+              <select name="contract_type" id="contract_type" required>
+                <option value="0">Month-to-month</option>
+                <option value="1">One year</option>
+                <option value="2">Two year</option>
+              </select>
+            </td>
+            <td>
+              <label for="has_online_security">Has Online Security:</label
+              ><br />
+              <select
+                name="has_online_security"
+                id="has_online_security"
+                required
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="total_charges_quarter">Total Charges Quarter:</label
+              ><br />
+              <input
+                type="text"
+                id="total_charges_quarter"
+                name="total_charges_quarter"
+                value="131.05"
+              />
+            </td>
+            <td>
+              <label for="paperless_billing">Paperless Billing:</label><br />
+              <select name="paperless_billing" id="paperless_billing" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <input type="submit" value="Predict" />
+      </form>
+      {% if prediction is defined %}
+      <h2>
+        Model Prediction: {% if prediction == 0 %} Customer is unlikely to Churn
+        {% else %} {% if prediction == None %} None {% else %} Customer is
+        likely to Churn {% endif %} {% endif %}
+      </h2>
+      {% endif %}
+    </div>
+  </body>
+</html>
